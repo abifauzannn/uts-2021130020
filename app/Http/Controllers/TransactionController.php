@@ -12,7 +12,14 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+    $transactions = Transaction::orderBy('created_at', 'desc')->get();
+    $totalIncome = Transaction::where('type', 'income')->sum('amount');
+    $totalExpense = Transaction::where('type', 'expense')->sum('amount');
+    $balance = $totalIncome - $totalExpense;
+    $numIncomeTransactions = Transaction::where('type', 'income')->count();
+    $numExpenseTransactions = Transaction::where('type', 'expense')->count();
+
+    return view('transactions.index', compact('transactions', 'totalIncome', 'totalExpense', 'balance', 'numIncomeTransactions', 'numExpenseTransactions'));
     }
 
     /**
