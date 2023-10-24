@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -19,7 +20,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('transactions.create');
     }
 
     /**
@@ -27,7 +28,21 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'amount' => 'required',
+            'type' => 'required',
+            'category' => 'required',
+            'notes' => 'required'
+        ]);
+
+        $transaction = Transaction::create([
+            'amount' => $validated['amount'],
+            'type' => $validated['type'],
+            'category' => $validated['category'],
+            'notes' => $validated['notes'],
+        ]);
+
+        return redirect()->route('transactions.index')->with('success', 'Transaksi berhasil ditambahkan!');
     }
 
     /**

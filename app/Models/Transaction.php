@@ -2,10 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'amount',
+        'type',
+        'category',
+        'notes',
+        'created_at',
+        'updated_at',
+    ];
+
+    // Tambahkan atribut yang perlu di-cast sebagai tipe data tertentu
+    protected $casts = [
+        'amount' => 'float',
+    ];
 }
+
