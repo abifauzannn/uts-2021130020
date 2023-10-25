@@ -37,7 +37,7 @@ class TransactionController extends Controller
     {
         $validated = $request->validate([
             'amount' => 'required',
-            'type' => 'required',
+            'type' => 'required|not_in:uncategorized',
             'category' => 'required',
             'notes' => 'required'
         ]);
