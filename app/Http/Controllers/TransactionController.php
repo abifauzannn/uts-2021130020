@@ -55,9 +55,9 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Transaction $transaction)
     {
-        //
+        return view('transactions.show', compact('transaction'));
     }
 
     /**
@@ -65,6 +65,7 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
+
         return view('transactions.edit', compact('transaction'));
     }
 

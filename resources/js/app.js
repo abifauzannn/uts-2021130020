@@ -1,47 +1,36 @@
 import './bootstrap';
 
-// Ambil elemen-elemen yang diperlukan
-const typeSelect = document.getElementById('type');
-const categorySelect = document.getElementById('category');
-const categoryOptions = document.getElementById('category-options');
+document.getElementById('type').addEventListener('change', function() {
+    var selectedType = this.value;
+    var categorySelect = document.getElementById('category');
 
-// Daftar kategori berdasarkan tipe transaksi
-const categoryOptionsByType = {
-    income: [
-        'wage',
-        'bonus',
-        'gift',
-    ],
-    expense: [
-        'food & drinks',
-        'shopping',
-        'charity',
-        'housing',
-        'insurance',
-        'taxes',
-        'transportation',
-    ],
-};
-
-// Fungsi untuk mengubah pilihan kategori
-function updateCategoryOptions() {
-    const selectedType = typeSelect.value;
-    const categories = categoryOptionsByType[selectedType] || [];
-
-    // Hapus semua opsi kategori yang ada
+    // Reset options
     categorySelect.innerHTML = '';
 
-    // Tambahkan opsi-opsi kategori baru
-    categories.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category;
-        option.textContent = category;
+    if (selectedType === 'income') {
+        // Add income categories
+        var incomeCategories = ['wage', 'bonus', 'gift'];
+        incomeCategories.forEach(function(category) {
+            var option = document.createElement('option');
+            option.value = category;
+            option.text = category;
+            categorySelect.appendChild(option);
+        });
+    } else if (selectedType === 'expense') {
+        // Add expense categories
+        var expenseCategories = ['food & drinks', 'shopping', 'charity', 'housing', 'insurance', 'taxes', 'transportation'];
+        expenseCategories.forEach(function(category) {
+            var option = document.createElement('option');
+            option.value = category;
+            option.text = category;
+            categorySelect.appendChild(option);
+        });
+    } else {
+        // Default option (e.g., 'uncategorized')
+        var option = document.createElement('option');
+        option.value = 'uncategorized';
+        option.text = 'Uncategorized';
         categorySelect.appendChild(option);
-    });
-}
+    }
+});
 
-// Tambahkan event listener untuk memantau perubahan pada tipe transaksi
-typeSelect.addEventListener('change', updateCategoryOptions);
-
-// Pemanggilan awal untuk menginisialisasi pilihan kategori
-updateCategoryOptions();
