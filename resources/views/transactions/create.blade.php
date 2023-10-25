@@ -22,7 +22,8 @@
         @csrf
         <div class="col mb-3">
             <label for="amount">Amount (Nominal Rupiah):</label>
-            <input type="text" class="form-control" id="amount" name="amount" placeholder="Masukkan jumlah transaksi" value="{{ old('amount') }}">
+            <input type="text" class="form-control" id="amount" name="amount" placeholder="Masukkan jumlah transaksi"
+                value="{{ old('amount') }}">
         </div>
         <div class="col mb-3">
             <div class="form-group">
@@ -46,7 +47,7 @@
 
         <div class="col mb-3">
             <label for="notes">Catatan:</label>
-            <textarea class="form-control" id="notes" name="notes" rows="4" placeholder="Tambahkan catatan transaksi"></textarea>
+            <textarea class="form-control" id="notes" name="notes" rows="4" placeholder="Tambahkan catatan transaksi">{{ old('notes') }}</textarea>
         </div>
         <div class="col mb-3">
             <button type="submit" class="btn btn-primary">Simpan</button>
