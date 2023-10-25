@@ -18,7 +18,7 @@ document.getElementById('type').addEventListener('change', function() {
         });
     } else if (selectedType === 'expense') {
         // Add expense categories
-        var expenseCategories = ['food & drinks', 'shopping', 'charity', 'housing', 'insurance', 'taxes', 'transportation'];
+        var expenseCategories = ['food_drinks', 'shopping', 'charity', 'housing', 'insurance', 'taxes', 'transportation'];
         expenseCategories.forEach(function(category) {
             var option = document.createElement('option');
             option.value = category;
