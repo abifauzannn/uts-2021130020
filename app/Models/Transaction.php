@@ -15,7 +15,7 @@ class Transaction extends Model
         'updated_at',
     ];
 
-    // Tambahkan atribut yang perlu di-cast sebagai tipe data tertentu
+
     protected $casts = [
         'amount' => 'float',
     ];

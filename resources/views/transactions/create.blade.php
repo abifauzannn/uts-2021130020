@@ -27,7 +27,7 @@
         <div class="col mb-3">
             <div class="form-group">
                 <label for="type">Tipe Transaksi:</label>
-                <select class="form-control" id="type" name="type"> {{ old('type')}}
+                <select class="form-control" id="type" name="type"></select>
                     <option value="income">Income</option>
                     <option value="expense">Expense</option>
                 </select>
@@ -37,7 +37,7 @@
             <div id="category-options">
                 <label for="category">Kategori:</label>
                 <select class="form-control" id="category" name="category">
-                    <option value="uncategorized" {{ old('category') == 'uncategorized' ? 'selected' : '' }}>Uncategorized</option>
+                    <option value="uncategorized">Uncategorized</option>
                 </select>
             </div>
         </div>
